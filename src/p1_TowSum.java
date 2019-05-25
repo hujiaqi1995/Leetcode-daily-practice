@@ -54,6 +54,25 @@ public class p1_TowSum {
         return -1;
     }
 
+    // 解决key覆盖问题
+    public static int[] twoSum2(int[] arr, int target) {
+        int n = arr.length;
+        Map<Integer,Integer> map = new HashMap<>(n);
+        for (int i = 0; i < n; i++) {
+            map.put(arr[i],i);
+        }
+
+        int b;
+        for (int i = 0; i < n; i++) {
+            b = target - arr[i];
+            if (map.containsKey(b) && map.get(b) != i) {
+                return new int[]{i, map.get(b)};
+            }
+        }
+        throw new IllegalArgumentException("no solution!");
+
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String[] strs = sc.nextLine().replace("[", "").replace("]", "").split(",");
@@ -63,7 +82,7 @@ public class p1_TowSum {
         for (int i = 0; i < n; i++) {
             arr[i] = Integer.valueOf(strs[i]);
         }
-        int[] res = twoSum(arr, target);
+        int[] res = twoSum2(arr, target);
         System.out.println(res[0] + " " + res[1]);
     }
 
