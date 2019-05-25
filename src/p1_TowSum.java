@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  * Because nums[0] + nums[1] = 2 + 7 = 9,
  * return [0, 1].
  * <p>
- * 踩坑：使用map会导致相同健值覆盖
+ * 踩坑：使用map会导致相同键值覆盖
  */
 
 public class p1_TowSum {
