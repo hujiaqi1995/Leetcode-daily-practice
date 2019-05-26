@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  * 踩坑：使用map会导致相同键值覆盖
  */
 
-public class p1_TowSum {
+public class P1_TowSum {
 
     public static int[] twoSum(int[] arr, int target) {
         int[] marr = Arrays.copyOf(arr,arr.length);
