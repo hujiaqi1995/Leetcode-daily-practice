@@ -46,6 +46,7 @@ public class P5_LongestPalindromicSubstring {
                 }
             }
         }
+
         return new String(c).substring(point - maxLength, point + maxLength + 1).replace("*", "");
 
     }
