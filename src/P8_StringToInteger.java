@@ -90,7 +90,7 @@ public class P8_StringToInteger {
                 int temp = Integer.valueOf(str.substring(0, str.length() - 1));
                 int lastNum = Integer.valueOf(str.substring(str.length() - 1));
                 int lastNum_m = -(min % 10);
-                if (temp > -(min / 10) || lastNum >= lastNum_m) {
+                if (temp > -(min / 10) || temp == -(min / 10) && lastNum >= lastNum_m) {
                     return min;
                 }
             }
