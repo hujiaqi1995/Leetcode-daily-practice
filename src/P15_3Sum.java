@@ -24,6 +24,28 @@ import java.util.*;
  * [-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6]
  */
 public class P15_3Sum {
+    private List<List<Integer>> threeSum2(int[] num) {
+        int high = num.length - 1, target = 0;
+        List<List<Integer>> res = new LinkedList<>();
+        Arrays.sort(num);
+        for (int i = 0; i < high - 1; i++) {
+            if (i == 0 || num[i] != num[i - 1]) {
+                int lo = i + 1, hi = high, sum = target - num[i];
+                while (lo < hi) {
+                    if (num[lo] + num[hi] == sum) {
+                        res.add(Arrays.asList(num[i], num[lo], num[hi]));
+                        while (lo < hi && num[lo] == num[lo + 1]) lo++;
+                        while (lo < hi && num[hi] == num[hi - 1]) hi--;
+                        lo++;
+                        hi--;
+                    } else if (num[lo] + num[hi] < sum) lo++;
+                    else hi--;
+                }
+            }
+        }
+        return res;
+    }
+
     public List<List<Integer>> threeSum(int[] nums) {
         List<Integer> positives = new ArrayList<>();
         List<Integer> zeros = new ArrayList<>();
@@ -133,24 +155,14 @@ public class P15_3Sum {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        while (sc.hasNext()) {
-            String[] strs = sc.nextLine()
-                    .replace("[", "")
-                    .replace("]", "")
-                    .replace(" ", "")
-                    .split(",");
-            int[] nums = new int[strs.length];
-            for (int i = 0; i < strs.length; i++) {
-                nums[i] = Integer.valueOf(strs[i]);
-            }
-            P15_3Sum sum = new P15_3Sum();
 
-            List<List<Integer>> list = sum.threeSum(nums);
-            for (int i = 0; i < list.size(); i++) {
-                System.out.println(list.get(i));
-            }
-
+        P15_3Sum sum = new P15_3Sum();
+        int[] nums = {-1, 0, 1, 2, -1, -4};
+        List<List<Integer>> list = sum.threeSum2(nums);
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
         }
+
 
     }
 }
