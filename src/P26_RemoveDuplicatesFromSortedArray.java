@@ -8,7 +8,7 @@ public class P26_RemoveDuplicatesFromSortedArray {
 
     public static int removeDuplicates(int[] nums) {
         if (nums.length < 2) return nums.length;
-        int last = nums[0];
+        int last = 0;
         for (int i = 1; i < nums.length; i++) {
             if (nums[last] != nums[i]) {
                 nums[++last] = nums[i];
@@ -18,7 +18,7 @@ public class P26_RemoveDuplicatesFromSortedArray {
     }
 
     public static void main(String[] args) {
-        int[] arr = {1, 1, 2};
+        int[] arr = {-1,0,0,0,0,3,3};
         System.out.println(removeDuplicates(arr));
     }
 }
